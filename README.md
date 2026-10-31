@@ -23,7 +23,8 @@ El código aún no es público: este repositorio documenta el proyecto y su avan
 Mi coche es antiguo: no tiene pantalla ni navegador. Tenía una tablet vieja y se me
 ocurrió darle una segunda vida como **la pantalla de un coche moderno**:
 Google Maps, música y asistente en el salpicadero, controlados desde la tablet, sin
-cambiar la radio ni comprar hardware.
+cambiar la radio ni comprar hardware: todo el sonido sigue saliendo por la radio
+del coche, conectada al móvil por Bluetooth.
 
 Las soluciones existentes dependen de hardware adicional o de configuraciones
 frágiles. Primero monté un sistema propio basado en proyectos de la comunidad, que
@@ -37,14 +38,17 @@ usando aquel sistema solo como referencia de lo que funciona.
 │  Móvil               │ ──────────────────────────────────▶ │  Tablet Receiver     │
 │  Android Auto        │   protocolo de proyección sobre TLS │  protocolo propio en │
 │  (Maps, música,      │ ◀────────────────────────────────── │  Kotlin: vídeo,      │
-│  asistente)          │   vídeo · táctil · micrófono · audio│  táctil, micrófono   │
+│  asistente)          │   vídeo · táctil · micrófono        │  táctil, micrófono   │
 └──────────────────────┘                                     └──────────────────────┘
 ```
 
 - **Fase 1 — receptor en la tablet:** la capa de protocolo se escribe en Kotlin, canal
-  por canal (vídeo, táctil, micrófono, audio del sistema, sensores, estado).
+  por canal (vídeo, táctil, micrófono, sensores, estado).
 - **Fase 2 — arranque automático desde el móvil:** al conectar el Bluetooth del coche,
   preparar la red y la sesión sin tocar el móvil.
+- **Audio:** todo el sonido sale del móvil por el Bluetooth de la radio del coche, como
+  siempre: música, indicaciones de navegación, llamadas, lectura de mensajes y sonidos
+  del sistema. La tablet no reproduce audio; solo envía el micrófono para el asistente.
 - Núcleo de sesión compartido con colas acotadas y máquinas de estado explícitas.
 
 ## Cómo lo desarrollo: agentes de IA con método
@@ -102,7 +106,7 @@ no se desvíe.
 - [x] Calibración contra un sistema de referencia que funciona
 - [ ] RFC 0003: arquitectura del receptor en Kotlin
 - [ ] Vídeo visible de extremo a extremo
-- [ ] Táctil, micrófono y audio del sistema
+- [ ] Táctil y micrófono
 - [ ] Arranque automático desde el móvil (fase 2)
 - [ ] Publicación del código (pendiente de revisión de licencias y procedencia)
 
