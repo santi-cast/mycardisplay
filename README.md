@@ -93,7 +93,8 @@ no se desvíe.
 | Núcleo de sesión | ✅ Implementado y testeado |
 | Decodificador de vídeo en la tablet | ✅ Implementado y testeado |
 | Handshake entre móvil y tablet (laboratorio) | ✅ Funciona en dispositivos reales |
-| Sonda de protocolo contra el móvil real | ✅ El móvil acepta la sesión y abre todos los canales (vídeo, táctil, micrófono, sensores); siguiente: primer vídeo |
+| Sonda de protocolo contra el móvil real | ✅ Sesión completa: el móvil abre todos los canales y ya envía vídeo H.264 a nuestro receptor de pruebas |
+| Mostrar el vídeo en la tablet | ⏳ Siguiente paso: receptor en Kotlin (RFC 0003) |
 | Arquitectura del receptor (RFC 0003) | ⏳ Pendiente |
 | Arranque automático desde el móvil | ⏳ Pendiente (fase 2) |
 
@@ -105,6 +106,7 @@ no se desvíe.
 - [x] Sonda de protocolo: versión, TLS y descubrimiento
 - [x] Calibración contra un sistema de referencia que funciona
 - [x] El móvil acepta la sesión y abre todos los canales
+- [x] Primer vídeo recibido del móvil en nuestro receptor de pruebas
 - [ ] RFC 0003: arquitectura del receptor en Kotlin
 - [ ] Vídeo visible de extremo a extremo
 - [ ] Táctil y micrófono
