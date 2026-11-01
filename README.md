@@ -94,6 +94,10 @@ no se desvíe.
 - **Lo que los tests no ven:** la primera prueba real falló por una API de Java que la
   tablet (Android 12) no tiene y que los tests en el PC no podían detectar. Ahora un
   control de lint bloquea esas llamadas antes de compilar.
+- **Revisión que ve lo que la prueba no ve:** el micrófono ya funcionaba con el
+  asistente, pero la revisión independiente encontró un caso en el que el móvil
+  recibiría solo silencio, el mismo fallo que rompía el asistente en el sistema de
+  referencia. Se corrigió con un test antes de integrarlo.
 - **Base de conocimiento verificada:** todo lo aprendido sobre el protocolo, los
   dispositivos y el sistema de referencia está en un documento propio; dos agentes
   independientes contrastaron cada afirmación con su fuente antes de darlo por bueno.
@@ -112,7 +116,8 @@ no se desvíe.
 | Arquitectura del receptor (RFC 0003) | ✅ Aprobada; se implementa por etapas |
 | Receptor propio en Kotlin: vídeo en la tablet | ✅ Muestra Android Auto proyectado desde el móvil real: primer fotograma en 6,6 s y una sesión de 27 minutos sin perder fotogramas |
 | Táctil | ✅ Toques, desplazamiento y zoom con dos dedos sobre Android Auto, a pantalla completa con la distribución original |
-| Micrófono (para el asistente) | ⏳ Siguiente paso |
+| Micrófono (para el asistente) | ✅ El asistente de Google entiende la voz desde la tablet: busca una gasolinera, pregunta a cuál ir y traza la ruta en Maps; también cambia de canción en Spotify |
+| Ciclo de vida (volver desde Inicio, pantalla apagada) | ⏳ Siguiente paso |
 | Arranque automático desde el móvil | ⏳ Pendiente (fase 2) |
 
 ## Roadmap
@@ -127,7 +132,8 @@ no se desvíe.
 - [x] RFC 0003: arquitectura del receptor en Kotlin
 - [x] Vídeo visible de extremo a extremo con nuestro receptor en Kotlin
 - [x] Táctil y pantalla completa con nuestro receptor en Kotlin
-- [ ] Micrófono (asistente y llamadas)
+- [x] Micrófono para el asistente con nuestro receptor en Kotlin
+- [ ] Ciclo de vida: volver desde Inicio o con la pantalla apagada sin reiniciar la sesión
 - [ ] Arranque automático desde el móvil (fase 2)
 - [ ] Publicación del código (pendiente de revisión de licencias y procedencia)
 
