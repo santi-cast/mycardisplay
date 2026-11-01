@@ -18,12 +18,14 @@ protocolos y TLS) en un problema técnico exigente.
 
 El código aún no es público: este repositorio documenta el proyecto y su avance.
 
-![Receptor de depuración en la tablet mostrando Android Auto proyectado desde el móvil](docs/img/tablet-receiver.png)
+![Android Auto a pantalla completa en la tablet, proyectado desde el móvil por mi receptor](docs/img/tablet-fullscreen.png)
 
-*Mi receptor en Kotlin (versión de depuración) mostrando Android Auto proyectado desde
-el móvil real, con el estado de la sesión a la izquierda: 27 minutos en ACTIVE sin
-perder fotogramas. El mapa y la tarjeta de música están difuminados por privacidad.
-Android Auto y Google Maps son marcas de Google; proyecto personal sin afiliación.*
+*Mi receptor en Kotlin (versión de depuración) mostrando Android Auto a pantalla
+completa y con la distribución original, proyectado desde el móvil real. Se maneja
+desde la tablet: toques, desplazamiento y zoom con dos dedos. El botón de menú sobre
+el icono de Maps es mío y abre los controles del receptor. El mapa, la música y la
+hora están difuminados por privacidad. Android Auto, Google Maps y Spotify son marcas
+de sus titulares; proyecto personal sin afiliación.*
 
 ## Cómo nació
 
@@ -109,8 +111,8 @@ no se desvíe.
 | Sonda de protocolo contra el móvil real | ✅ Sesión completa: el móvil abre todos los canales y envía vídeo H.264 |
 | Arquitectura del receptor (RFC 0003) | ✅ Aprobada; se implementa por etapas |
 | Receptor propio en Kotlin: vídeo en la tablet | ✅ Muestra Android Auto proyectado desde el móvil real: primer fotograma en 6,6 s y una sesión de 27 minutos sin perder fotogramas |
-| Táctil | ⏳ Siguiente paso |
-| Micrófono (para el asistente) | ⏳ Pendiente |
+| Táctil | ✅ Toques, desplazamiento y zoom con dos dedos sobre Android Auto, a pantalla completa con la distribución original |
+| Micrófono (para el asistente) | ⏳ Siguiente paso |
 | Arranque automático desde el móvil | ⏳ Pendiente (fase 2) |
 
 ## Roadmap
@@ -124,7 +126,8 @@ no se desvíe.
 - [x] Primer vídeo recibido del móvil en nuestro receptor de pruebas
 - [x] RFC 0003: arquitectura del receptor en Kotlin
 - [x] Vídeo visible de extremo a extremo con nuestro receptor en Kotlin
-- [ ] Táctil y micrófono
+- [x] Táctil y pantalla completa con nuestro receptor en Kotlin
+- [ ] Micrófono (asistente y llamadas)
 - [ ] Arranque automático desde el móvil (fase 2)
 - [ ] Publicación del código (pendiente de revisión de licencias y procedencia)
 
