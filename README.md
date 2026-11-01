@@ -18,6 +18,13 @@ protocolos y TLS) en un problema técnico exigente.
 
 El código aún no es público: este repositorio documenta el proyecto y su avance.
 
+![Receptor de depuración en la tablet mostrando Android Auto proyectado desde el móvil](docs/img/tablet-receiver.png)
+
+*Mi receptor en Kotlin (versión de depuración) mostrando Android Auto proyectado desde
+el móvil real, con el estado de la sesión a la izquierda: 27 minutos en ACTIVE sin
+perder fotogramas. El mapa y la tarjeta de música están difuminados por privacidad.
+Android Auto y Google Maps son marcas de Google; proyecto personal sin afiliación.*
+
 ## Cómo nació
 
 Mi coche es antiguo: no tiene pantalla ni navegador. Tenía una tablet vieja y se me
@@ -82,6 +89,12 @@ no se desvíe.
 - **Comparación contra una referencia:** capturas acotadas de una sesión que funciona
   y de la nuestra, para localizar exactamente dónde se separan.
 - **Límites explícitos:** colas, plazos y presupuestos de memoria acotados y testeados.
+- **Lo que los tests no ven:** la primera prueba real falló por una API de Java que la
+  tablet (Android 12) no tiene y que los tests en el PC no podían detectar. Ahora un
+  control de lint bloquea esas llamadas antes de compilar.
+- **Base de conocimiento verificada:** todo lo aprendido sobre el protocolo, los
+  dispositivos y el sistema de referencia está en un documento propio; dos agentes
+  independientes contrastaron cada afirmación con su fuente antes de darlo por bueno.
 - **Procedencia y privacidad:** registro del origen de cada material externo; ningún
   dato personal ni de dispositivos en la evidencia.
 
@@ -93,9 +106,11 @@ no se desvíe.
 | Núcleo de sesión | ✅ Implementado y testeado |
 | Decodificador de vídeo en la tablet | ✅ Implementado y testeado |
 | Handshake entre móvil y tablet (laboratorio) | ✅ Funciona en dispositivos reales |
-| Sonda de protocolo contra el móvil real | ✅ Sesión completa: el móvil abre todos los canales y ya envía vídeo H.264 a nuestro receptor de pruebas |
-| Mostrar el vídeo en la tablet | ⏳ Siguiente paso: receptor en Kotlin (RFC 0003) |
-| Arquitectura del receptor (RFC 0003) | ⏳ Pendiente |
+| Sonda de protocolo contra el móvil real | ✅ Sesión completa: el móvil abre todos los canales y envía vídeo H.264 |
+| Arquitectura del receptor (RFC 0003) | ✅ Aprobada; se implementa por etapas |
+| Receptor propio en Kotlin: vídeo en la tablet | ✅ Muestra Android Auto proyectado desde el móvil real: primer fotograma en 6,6 s y una sesión de 27 minutos sin perder fotogramas |
+| Táctil | ⏳ Siguiente paso |
+| Micrófono (para el asistente) | ⏳ Pendiente |
 | Arranque automático desde el móvil | ⏳ Pendiente (fase 2) |
 
 ## Roadmap
@@ -107,8 +122,8 @@ no se desvíe.
 - [x] Calibración contra un sistema de referencia que funciona
 - [x] El móvil acepta la sesión y abre todos los canales
 - [x] Primer vídeo recibido del móvil en nuestro receptor de pruebas
-- [ ] RFC 0003: arquitectura del receptor en Kotlin
-- [ ] Vídeo visible de extremo a extremo
+- [x] RFC 0003: arquitectura del receptor en Kotlin
+- [x] Vídeo visible de extremo a extremo con nuestro receptor en Kotlin
 - [ ] Táctil y micrófono
 - [ ] Arranque automático desde el móvil (fase 2)
 - [ ] Publicación del código (pendiente de revisión de licencias y procedencia)
